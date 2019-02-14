@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: Posting my first blog
 ---
 
