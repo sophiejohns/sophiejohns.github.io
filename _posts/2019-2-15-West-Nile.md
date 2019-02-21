@@ -14,7 +14,7 @@ I will analyse the 2017 and 2018 data for West Nile and compare that to the data
 
 To begin I must import the data and clean the data as there are a lot of missing values. I will use python to do this;
 
-```python
+{% highlight python %}
 import pandas as pd
 
 # Import the data
@@ -56,7 +56,7 @@ State18.fillna(0, inplace = True)
 
 # Save dataframe as csv for Tableau 
 State18.fillna(0).to_csv('state_data18.csv')
-```
+{% endhighlight %}
 
 Now I have a dataset that specifies the State, week of the year, and cumulative number of neuroinvasive and non-neuroinvasive cases of West Nile virus and Zika virus. I upload this into Tableau and created some visualisations to better understand West Nile virus in the US.
 
