@@ -15,49 +15,6 @@ I will analyse the 2017 and 2018 data for West Nile and compare that to the data
 To begin I must import the data and clean the data as there are a lot of missing values. I will use python to do this;
 
 
-$$	
-import pandas as pd
-
-# Import the data
-data18 = pd.read_csv('nndss-west-nile-virus-disease/nndss-table-ii.-west-nile-to-zika.csv')
-# data17 = pd.read_csv('nndss-west-nile-virus-disease/nndss-table-ii.-west-nile-virus-disease.csv')
-
-# Tidying the headings
-data18.columns = data18.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('?', '').str.replace('§', '').str.replace('?', '').str.replace(',', '').str.replace('west_nile_virus_disease', 'WNVD').str.replace('mmwr_', '').str.replace('nonneuroinvasive', 'NN').str.replace('neuroinvasive', 'N')
-
-# Drop UNITED STATES and Regions
-State18 = \
-data18[(data18.reporting_area != 'UNITED STATES') & 
-        (data18.reporting_area != 'NEW ENGLAND') &
-        (data18.reporting_area != 'MID. ATLANTIC') &
-        (data18.reporting_area != 'E.N. CENTRAL') &
-        (data18.reporting_area != 'W.N. CENTRAL') &
-        (data18.reporting_area != 'E.S. CENTRAL') &
-        (data18.reporting_area != 'W.S. CENTRAL') &
-        (data18.reporting_area != 'S. ATLANTIC') &
-        (data18.reporting_area != 'MOUNTAIN') &
-        (data18.reporting_area != 'PACIFIC') &
-        (data18.reporting_area != 'AMER. SAMOA') &
-        (data18.reporting_area != 'C.N.M.I.') &
-        (data18.reporting_area != 'GUAM') &
-        (data18.reporting_area != 'PUERTO RICO') &
-        (data18.reporting_area != 'VIRGIN ISL.')]
-
-# Tidying the state names
-states = []
-for i in range(len(list(State18['reporting_area']))):
-    states.append(list(State18['reporting_area'])[i].replace('DIST. OF COL.', 'District of columnbia').capitalize())
-State18['State'] = states
-
-# Adding country for Tableau mapping 
-State18['Country'] = ['US'] * len(State18)
-
-# Fill NaN with 0
-State18.fillna(0, inplace = True)
-
-# Save dataframe as csv for Tableau 
-State18.fillna(0).to_csv('state_data18.csv')
-$$
 
 Now I have a dataset that specifies the State, week of the year, and cumulative number of neuroinvasive and non-neuroinvasive cases of West Nile virus and Zika virus. I upload this into Tableau and created some visualisations to better understand West Nile virus in the US.
 
