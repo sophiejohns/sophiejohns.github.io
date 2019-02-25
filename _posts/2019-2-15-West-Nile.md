@@ -19,7 +19,6 @@ import pandas as pd
 
 # Import the data
 data18 = pd.read_csv('nndss-west-nile-virus-disease/nndss-table-ii.-west-nile-to-zika.csv')
-# data17 = pd.read_csv('nndss-west-nile-virus-disease/nndss-table-ii.-west-nile-virus-disease.csv')
 
 # Tidying the headings
 data18.columns = data18.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('?', '').str.replace('§', '').str.replace('?', '').str.replace(',', '').str.replace('west_nile_virus_disease', 'WNVD').str.replace('mmwr_', '').str.replace('nonneuroinvasive', 'NN').str.replace('neuroinvasive', 'N')
