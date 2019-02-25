@@ -12,7 +12,7 @@ I will analyse the 2017 and 2018 data for West Nile and compare that to the data
  
 ## Importing and cleaning the data  
 
-To begin I must import the data and clean the data as there are a lot of missing values. I will use python to do this;
+To begin I must import the data and clean the data as there are a lot of missing values. I will use python in a Jupyter notebook to do this. My full notebook can be found on GitHub [here](), otherwise there are a few extracts below; 
 
 {% highlight python %}
 import pandas as pd
@@ -20,8 +20,14 @@ import pandas as pd
 # Import the data
 data18 = pd.read_csv('nndss-west-nile-virus-disease/nndss-table-ii.-west-nile-to-zika.csv')
 
+
+{% endhighlight %}
+
+
+{% highlight python %}
 # Tidying the headings
 data18.columns = data18.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('?', '').str.replace('§', '').str.replace('?', '').str.replace(',', '').str.replace('west_nile_virus_disease', 'WNVD').str.replace('mmwr_', '').str.replace('nonneuroinvasive', 'NN').str.replace('neuroinvasive', 'N')
+
 
 {% endhighlight %}
 
